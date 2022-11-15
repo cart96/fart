@@ -5,6 +5,10 @@
 True brainfuck assembler that generates binary from source for DOS.
 
 ![FART IN ACTION](./assets/action.png)
+(assembled brainfuck runs on DOSBox)
+
+![FART DOS](https://i.imgur.com/0iNYFNT.png)
+(fart edited for DOS)
 
 </div>
 
@@ -26,6 +30,7 @@ Go to `src/fart` and run `build.bat` or `build.sh` depend on your OS.
 ## Special Thanks
 
 - Thanks [Gülce](https://github.com/gulje) for helping me while debugging ❤️
+- Thanks [Skeeto](https://github.com/skeeto/brainfuck-fart) for making a DOS version of fart ❤️
 
 ## License
 
