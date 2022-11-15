@@ -5,9 +5,11 @@
 True brainfuck assembler that generates binary from source for DOS.
 
 ![FART IN ACTION](./assets/action.png)
+
 (assembled brainfuck runs on DOSBox)
 
 ![FART DOS](https://i.imgur.com/0iNYFNT.png)
+
 (fart edited for DOS)
 
 </div>
