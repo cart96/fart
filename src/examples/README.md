@@ -17,5 +17,3 @@ Some examples used to test this assembler.
 - https://github.com/fabianishere/brainfuck/tree/master/examples
     - bottles.bf
     - triangle.bf
-- https://github.com/erikdubbelboer/brainfuck-jit/blob/master/mandelbrot.bf
-    - mandelbrot.bf
