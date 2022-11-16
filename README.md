@@ -16,9 +16,10 @@ True brainfuck assembler that generates binary from source for DOS.
 
 ## Informations
 
+- Written in C99.
 - Can handle maximum 2048 loop. (you can modify it from source.)
 - Only has 4096 cell. (you can modify it from source.)
-- Only supports little-endian.
+- Designed for 8086.
 
 ## Compiling
 
