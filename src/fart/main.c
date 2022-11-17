@@ -3,14 +3,14 @@
 
 int main(int argc, char **argv)
 {
-    if (argc != 3)
+    if (argc < 2)
     {
-        puts("usage: fart input.bf output.com");
+        puts("usage: fart <input.bf> [output.com]");
         return -1;
     }
 
     char *content = read_file(argv[1]);
-    char *output = argv[2];
+    char *output = argc > 2 ? argv[2] : "A.COM";
 
     if (content == NULL)
     {

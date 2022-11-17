@@ -27,8 +27,14 @@ Go to `src/fart` and run `build.bat` or `build.sh` depend on your OS.
 
 ## Usage
 
-- `fart [input] [output]`
-- `fart e.bf EULER.COM`
+- `<...>` = Required
+- `[...]` = Optional
+
+
+You can use fart like `fart <input file> [output file]` this in command-line. If you don't pass output file, it will write output to `A.COM`.
+
+- `fart e.bf euler.com`
+- `fart hello.b`
 
 ## Special Thanks
 
