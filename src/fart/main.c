@@ -28,17 +28,29 @@ int main(int argc, char **argv)
     fart_assembler *assembler = fart_assembler_init(lexer);
     if (assembler == NULL)
     {
+        fart_lexer_free(lexer);
         free(content);
         return -1;
     }
 
     fart_assembler_run(assembler);
 
-    write_file(output, assembler->binary, assembler->lexer->binary_size);
-    printf("passed 3, wrote %zu byte.\n", assembler->lexer->binary_size);
+    if (write_file(output, assembler->binary, assembler->lexer->binary_size) == 0)
+    {
+        puts("failed to write output.");
 
-    fart_assembler_free(assembler);
-    free(content);
+        fart_assembler_free(assembler);
+        free(content);
 
-    return 0;
+        return -1;
+    }
+    else
+    {
+        printf("passed 3, wrote %zu byte.\n", assembler->lexer->binary_size);
+
+        fart_assembler_free(assembler);
+        free(content);
+
+        return 0;
+    }
 }
