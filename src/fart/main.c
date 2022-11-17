@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     fart_assembler_run(assembler);
 
     write_file(output, assembler->binary, assembler->lexer->binary_size);
-    printf("passed 3, wrote %lld byte.\n", assembler->lexer->binary_size);
+    printf("passed 3, wrote %zu byte.\n", assembler->lexer->binary_size);
 
     fart_assembler_free(assembler);
     free(content);
