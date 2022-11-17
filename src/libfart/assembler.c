@@ -119,9 +119,9 @@ void fart_assembler_run(fart_assembler *assembler)
         }
         case FART_TOKEN_OUTPUT: {
             // mov dl, [offset + bx]
-            // mov ah, 2
-            // int 21h
-            unsigned char opcodes[8] = {0x8A, 0x97, 0x00, 0x00, 0xB4, 0x02, 0xCD, 0x21};
+            // mov ah, 0eh
+            // int 10h
+            unsigned char opcodes[8] = {0x8A, 0x87, 0x00, 0x00, 0xB4, 0x0E, 0xCD, 0x10};
 
             opcodes[2] = cell_offset[0];
             opcodes[3] = cell_offset[1];
@@ -137,10 +137,10 @@ void fart_assembler_run(fart_assembler *assembler)
             break;
         }
         case FART_TOKEN_INPUT: {
-            // mov ah, 7
-            // int 21h
+            // mov ah, 00h
+            // int 16h
             // mov byte [offset + bx], al
-            unsigned char opcodes[8] = {0xB4, 0x07, 0xCD, 0x21, 0x88, 0x87, 0x00, 0x00};
+            unsigned char opcodes[8] = {0xB4, 0x00, 0xCD, 0x16, 0x88, 0x87, 0x00, 0x00};
 
             opcodes[6] = cell_offset[0];
             opcodes[7] = cell_offset[1];

@@ -20,6 +20,7 @@ True brainfuck assembler that generates binary from source for DOS.
 - Can handle maximum 2048 loop. (you can modify it from source.)
 - Only has 4096 cell. (you can modify it from source.)
 - Designed for 8086.
+- The main focus was for DOS, but you can run the output on any 16-bit operating system if they allow you to use BIOS interrupts.
 
 ## Downloading
 
