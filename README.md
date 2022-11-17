@@ -21,6 +21,10 @@ True brainfuck assembler that generates binary from source for DOS.
 - Only has 4096 cell. (you can modify it from source.)
 - Designed for 8086.
 
+## Downloading
+
+You can download pre-built fart binaries from github releases.
+
 ## Compiling
 
 Go to `src/fart` and run `build.bat` or `build.sh` depend on your OS.

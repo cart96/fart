@@ -2,3 +2,4 @@ lab/
 *.com
 src/fart/*.bf
 src/fart/fart
+build/
