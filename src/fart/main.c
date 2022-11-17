@@ -1,8 +1,12 @@
 #include "../libfart/assembler.c"
 #include "file.c"
 
+static char fart_info[] = "fart v0.0.1 - brainfuck assembler for DOS";
+
 int main(int argc, char **argv)
 {
+    puts(fart_info);
+
     if (argc < 2)
     {
         puts("usage: fart <input.bf> [output.com]");
