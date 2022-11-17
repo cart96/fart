@@ -1,7 +1,9 @@
 #include "./include/assembler.h"
+
+#include <stdio.h>
+
 #include "checker.c"
 #include "lexer.c"
-#include <stdio.h>
 
 fart_assembler *fart_assembler_init(fart_lexer *lexer)
 {

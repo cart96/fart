@@ -1,4 +1,5 @@
 #include "include/checker.h"
+
 #include <stdio.h>
 
 int run_checker(fart_lexer *lexer, fart_token *tokens)
@@ -37,9 +38,8 @@ int run_checker(fart_lexer *lexer, fart_token *tokens)
         index++;
     }
 
-    if (temp_index != 0) {
+    if (temp_index != 0)
         return last_open;
-    }
 
     return -1;
 }
