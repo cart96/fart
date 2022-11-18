@@ -81,12 +81,16 @@ void fart_assembler_run(fart_assembler *assembler)
             break;
         }
         case FART_TOKEN_NEXT: {
-            //    inc bx
+            //    add bx, <value>
             //    cmp bx, 4096
-            //    jne L
-            //    xor bx, bx
+            //    jl L
+            //    sub bx, 4096
             // L:
-            unsigned char opcodes[9] = {0x43, 0x81, 0xFB, 0x00, 0x10, 0x75, 0x02, 0x31, 0xDB};
+            unsigned char opcodes[14] = {0x81, 0xC3, 0x00, 0x00, 0x81, 0xFB, 0x00,
+                                         0x10, 0x7C, 0x04, 0x81, 0xEB, 0x00, 0x10};
+
+            opcodes[2] = token.value & 0x00FF;
+            opcodes[3] = token.value >> 8;
 
             assembler->binary[byte_index++] = opcodes[0];
             assembler->binary[byte_index++] = opcodes[1];
@@ -97,14 +101,26 @@ void fart_assembler_run(fart_assembler *assembler)
             assembler->binary[byte_index++] = opcodes[6];
             assembler->binary[byte_index++] = opcodes[7];
             assembler->binary[byte_index++] = opcodes[8];
+            assembler->binary[byte_index++] = opcodes[9];
+            assembler->binary[byte_index++] = opcodes[10];
+            assembler->binary[byte_index++] = opcodes[11];
+            assembler->binary[byte_index++] = opcodes[12];
+            assembler->binary[byte_index++] = opcodes[13];
             break;
         }
         case FART_TOKEN_BACK: {
-            //    cmp bx, 0
-            //    jne L
-            //    mov bx, 4096
-            // L: dec bx
-            unsigned char opcodes[9] = {0x83, 0xFB, 0x00, 0x75, 0x03, 0xBB, 0x00, 0x10, 0x4B};
+            //    cmp bx, <value>
+            //    jnl L
+            //    add bx, 4096
+            // L: sub bx, <value>
+            unsigned char opcodes[14] = {0x81, 0xFB, 0x00, 0x00, 0x7D, 0x04, 0x81,
+                                         0xC3, 0x00, 0x10, 0x81, 0xEB, 0x00, 0x00};
+
+            opcodes[2] = token.value & 0x00FF;
+            opcodes[3] = token.value >> 8;
+
+            opcodes[12] = opcodes[2];
+            opcodes[13] = opcodes[3];
 
             assembler->binary[byte_index++] = opcodes[0];
             assembler->binary[byte_index++] = opcodes[1];
@@ -115,6 +131,11 @@ void fart_assembler_run(fart_assembler *assembler)
             assembler->binary[byte_index++] = opcodes[6];
             assembler->binary[byte_index++] = opcodes[7];
             assembler->binary[byte_index++] = opcodes[8];
+            assembler->binary[byte_index++] = opcodes[9];
+            assembler->binary[byte_index++] = opcodes[10];
+            assembler->binary[byte_index++] = opcodes[11];
+            assembler->binary[byte_index++] = opcodes[12];
+            assembler->binary[byte_index++] = opcodes[13];
             break;
         }
         case FART_TOKEN_OUTPUT: {

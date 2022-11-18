@@ -61,18 +61,16 @@ fart_token fart_lexer_next(fart_lexer *lexer)
         return (fart_token){.kind = FART_TOKEN_EOF};
     case '+':
         lexer->binary_size += 5;
-        return fart_lexer_collect_optimized(lexer, '+', FART_TOKEN_PLUS);
+        return fart_lexer_collect_optimized(lexer, '+', 250, FART_TOKEN_PLUS);
     case '-':
         lexer->binary_size += 5;
-        return fart_lexer_collect_optimized(lexer, '-', FART_TOKEN_MINUS);
+        return fart_lexer_collect_optimized(lexer, '-', 250, FART_TOKEN_MINUS);
     case '>':
-        fart_lexer_advance(lexer);
-        lexer->binary_size += 9;
-        return (fart_token){.kind = FART_TOKEN_NEXT};
+        lexer->binary_size += 14;
+        return fart_lexer_collect_optimized(lexer, '>', 4000, FART_TOKEN_NEXT);
     case '<':
-        fart_lexer_advance(lexer);
-        lexer->binary_size += 9;
-        return (fart_token){.kind = FART_TOKEN_BACK};
+        lexer->binary_size += 14;
+        return fart_lexer_collect_optimized(lexer, '<', 4000, FART_TOKEN_BACK);
     case '.':
         fart_lexer_advance(lexer);
         lexer->binary_size += 8;
@@ -96,7 +94,7 @@ fart_token fart_lexer_next(fart_lexer *lexer)
     }
 }
 
-fart_token fart_lexer_collect_optimized(fart_lexer *lexer, char value, fart_token_kind kind)
+fart_token fart_lexer_collect_optimized(fart_lexer *lexer, char value, int stop, fart_token_kind kind)
 {
     fart_lexer_advance(lexer);
     char current = fart_lexer_current(lexer);
@@ -110,7 +108,7 @@ fart_token fart_lexer_collect_optimized(fart_lexer *lexer, char value, fart_toke
         fart_lexer_advance(lexer);
         current = fart_lexer_current(lexer);
 
-        if (count == 250)
+        if (count == stop)
         {
             break;
         }

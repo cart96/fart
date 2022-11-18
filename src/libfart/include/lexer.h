@@ -20,7 +20,7 @@ typedef struct
  */
 typedef struct
 {
-    fart_jump_table jump_table[2048]; // storing jumps.
+    fart_jump_table jump_table[4096]; // storing jumps.
     char *source;                     // for storing given source.
     size_t source_length;             // storing given source length.
     size_t position;                  // current read position.
@@ -66,10 +66,11 @@ fart_token fart_lexer_next(fart_lexer *lexer);
  * token collector and optimizer for fart.
  * @param lexer lexer to process.
  * @param value character to collect.
+ * @param stop maximum collect value.
  * @param kind token kind to return.
  * @returns collected token.
  */
-fart_token fart_lexer_collect_optimized(fart_lexer *lexer, char value, fart_token_kind kind);
+fart_token fart_lexer_collect_optimized(fart_lexer *lexer, char value, int stop, fart_token_kind kind);
 
 /**
  * wrapper function for lexer.
