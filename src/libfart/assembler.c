@@ -59,11 +59,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[3] = cell_offset[1];
             opcodes[4] = token.value;
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
-            assembler->binary[byte_index++] = opcodes[3];
-            assembler->binary[byte_index++] = opcodes[4];
+            ITER_WRITE_OP(5)
             break;
         }
         case FART_TOKEN_MINUS: {
@@ -73,11 +69,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[3] = cell_offset[1];
             opcodes[4] = token.value;
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
-            assembler->binary[byte_index++] = opcodes[3];
-            assembler->binary[byte_index++] = opcodes[4];
+            ITER_WRITE_OP(5)
             break;
         }
         case FART_TOKEN_NEXT: {
@@ -92,20 +84,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[2] = token.value & 0x00FF;
             opcodes[3] = token.value >> 8;
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
-            assembler->binary[byte_index++] = opcodes[3];
-            assembler->binary[byte_index++] = opcodes[4];
-            assembler->binary[byte_index++] = opcodes[5];
-            assembler->binary[byte_index++] = opcodes[6];
-            assembler->binary[byte_index++] = opcodes[7];
-            assembler->binary[byte_index++] = opcodes[8];
-            assembler->binary[byte_index++] = opcodes[9];
-            assembler->binary[byte_index++] = opcodes[10];
-            assembler->binary[byte_index++] = opcodes[11];
-            assembler->binary[byte_index++] = opcodes[12];
-            assembler->binary[byte_index++] = opcodes[13];
+            ITER_WRITE_OP(14)
             break;
         }
         case FART_TOKEN_BACK: {
@@ -122,20 +101,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[12] = opcodes[2];
             opcodes[13] = opcodes[3];
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
-            assembler->binary[byte_index++] = opcodes[3];
-            assembler->binary[byte_index++] = opcodes[4];
-            assembler->binary[byte_index++] = opcodes[5];
-            assembler->binary[byte_index++] = opcodes[6];
-            assembler->binary[byte_index++] = opcodes[7];
-            assembler->binary[byte_index++] = opcodes[8];
-            assembler->binary[byte_index++] = opcodes[9];
-            assembler->binary[byte_index++] = opcodes[10];
-            assembler->binary[byte_index++] = opcodes[11];
-            assembler->binary[byte_index++] = opcodes[12];
-            assembler->binary[byte_index++] = opcodes[13];
+            ITER_WRITE_OP(14)
             break;
         }
         case FART_TOKEN_OUTPUT: {
@@ -147,14 +113,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[2] = cell_offset[0];
             opcodes[3] = cell_offset[1];
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
-            assembler->binary[byte_index++] = opcodes[3];
-            assembler->binary[byte_index++] = opcodes[4];
-            assembler->binary[byte_index++] = opcodes[5];
-            assembler->binary[byte_index++] = opcodes[6];
-            assembler->binary[byte_index++] = opcodes[7];
+            ITER_WRITE_OP(8)
             break;
         }
         case FART_TOKEN_INPUT: {
@@ -166,14 +125,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[6] = cell_offset[0];
             opcodes[7] = cell_offset[1];
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
-            assembler->binary[byte_index++] = opcodes[3];
-            assembler->binary[byte_index++] = opcodes[4];
-            assembler->binary[byte_index++] = opcodes[5];
-            assembler->binary[byte_index++] = opcodes[6];
-            assembler->binary[byte_index++] = opcodes[7];
+            ITER_WRITE_OP(8)
             break;
         }
         case FART_TOKEN_LOOP_OPEN: {
@@ -192,15 +144,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[7] = jump_end_offset[0];
             opcodes[8] = jump_end_offset[1];
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
-            assembler->binary[byte_index++] = opcodes[3];
-            assembler->binary[byte_index++] = opcodes[4];
-            assembler->binary[byte_index++] = opcodes[5];
-            assembler->binary[byte_index++] = opcodes[6];
-            assembler->binary[byte_index++] = opcodes[7];
-            assembler->binary[byte_index++] = opcodes[8];
+            ITER_WRITE_OP(9)
             break;
         }
         case FART_TOKEN_LOOP_CLOSE: {
@@ -215,9 +159,7 @@ void fart_assembler_run(fart_assembler *assembler)
             opcodes[1] = jump_start_offset[0];
             opcodes[2] = jump_start_offset[1];
 
-            assembler->binary[byte_index++] = opcodes[0];
-            assembler->binary[byte_index++] = opcodes[1];
-            assembler->binary[byte_index++] = opcodes[2];
+            ITER_WRITE_OP(3)
             break;
         }
         default: {
