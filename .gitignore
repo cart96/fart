@@ -1,5 +1,5 @@
 lab/
 *.com
-src/fart/*.bf
+src/fart/*.b
 src/fart/fart
 build/
