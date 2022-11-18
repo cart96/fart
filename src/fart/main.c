@@ -1,7 +1,7 @@
 #include "../libfart/assembler.c"
 #include "file.c"
 
-static char fart_info[] = "fart v0.1.0 - brainfuck assembler for DOS";
+static char fart_info[] = "fart v0.1.1 - brainfuck assembler for DOS";
 
 int main(int argc, char **argv)
 {
@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 
     if (argc < 2)
     {
-        puts("usage: fart <input.bf> [output.com]");
+        puts("usage: fart <input file> [output file]");
         return -1;
     }
 

@@ -24,6 +24,6 @@ do
     fi
 
     cd ./build
-    zip -r "$target.zip" $target
+    zip -r "fart-$target.zip" $target
     cd ..
 done
