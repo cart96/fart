@@ -3,6 +3,10 @@
 
 #include "lexer.h"
 
+#define ITER_WRITE_OP(max)                                                                                             \
+    for (size_t _idx = 0; _idx < max; _idx++)                                                                          \
+        assembler->binary[byte_index++] = opcodes[_idx];
+
 /**
  * struct for assembler data.
  */
