@@ -4,13 +4,13 @@
 
 True brainfuck assembler that generates binary from source for DOS.
 
-![FART IN ACTION](./assets/action.png)
+![FART IN DOS](./assets/action.png)
 
 (assembled brainfuck runs on DOSBox)
 
-![FART DOS](https://i.imgur.com/0iNYFNT.png)
+![FART MANDELBROT](https://i.imgur.com/axyLRh8.png)
 
-(fart edited for DOS)
+(assembled mandelbrot.b runs on Windows 7)
 
 </div>
 
