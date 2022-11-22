@@ -8,10 +8,6 @@ True brainfuck assembler that generates binary from source for DOS.
 
 (assembled brainfuck runs on DOSBox)
 
-![FART MANDELBROT](https://i.imgur.com/axyLRh8.png)
-
-(assembled mandelbrot.b runs on Windows 7)
-
 </div>
 
 ## Informations
@@ -28,7 +24,17 @@ You can download pre-built fart binaries from github releases.
 
 ## Compiling
 
-Go to `src/fart` and run `build.bat` or `build.sh` depend on your OS.
+### Automatic Installation
+
+Copy and paste following command to your terminal and it will compile from source and add output binary to /usr/bin folder.
+
+```
+curl -fsSL https://raw.githubusercontent.com/cart96/fart/main/install.sh | sh
+```
+
+### Manual Installation
+
+Go to `src/fart/scripts` and run `build.bat` or `build.sh` depend on your OS.
 
 ## Usage
 
