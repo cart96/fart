@@ -26,6 +26,7 @@ typedef struct
 {
     fart_token_kind kind; // for storing collected token kind (type).
     size_t value;         // reserved for extra value.
+    size_t value2;        // reserved for extra value.
 } fart_token;
 
 #endif /* LIBFART_TOKEN */

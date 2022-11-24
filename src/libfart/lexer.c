@@ -17,8 +17,8 @@ fart_lexer *fart_lexer_init(char *source)
     lexer->position = 0;
     lexer->jump_table_length = 0;
 
-    // xor bx (2 byte) + offset (4096 byte) + exit interrupt (4 byte)
-    lexer->binary_size = 2 + 4096 + 4;
+    // xor bx (2 byte) + exit interrupt (4 byte) + tail
+    lexer->binary_size = 2 + 4 + BINARY_TAIL;
 
     return lexer;
 }
@@ -66,19 +66,19 @@ fart_token fart_lexer_next(fart_lexer *lexer)
         lexer->binary_size += 5;
         return fart_lexer_collect_optimized(lexer, '-', 250, FART_TOKEN_MINUS);
     case '>':
-        lexer->binary_size += 14;
+        lexer->binary_size += 7;
         return fart_lexer_collect_optimized(lexer, '>', 4000, FART_TOKEN_NEXT);
     case '<':
-        lexer->binary_size += 14;
+        lexer->binary_size += 8;
         return fart_lexer_collect_optimized(lexer, '<', 4000, FART_TOKEN_BACK);
     case '.':
         fart_lexer_advance(lexer);
-        lexer->binary_size += 8;
-        return (fart_token){.kind = FART_TOKEN_OUTPUT};
+        lexer->binary_size += 3;
+        return (fart_token){.kind = FART_TOKEN_OUTPUT, .value = CALCULATE_CURRENT_POS(lexer->binary_size)};
     case ',':
         fart_lexer_advance(lexer);
-        lexer->binary_size += 8;
-        return (fart_token){.kind = FART_TOKEN_INPUT};
+        lexer->binary_size += 3;
+        return (fart_token){.kind = FART_TOKEN_INPUT, .value = CALCULATE_CURRENT_POS(lexer->binary_size)};
     case '[': {
         fart_lexer_advance(lexer);
         lexer->binary_size += 9;
@@ -114,7 +114,7 @@ fart_token fart_lexer_collect_optimized(fart_lexer *lexer, char value, int stop,
         }
     }
 
-    return (fart_token){.kind = kind, .value = count};
+    return (fart_token){.kind = kind, .value = count, .value2 = CALCULATE_CURRENT_POS(lexer->binary_size)};
 }
 
 fart_token *fart_lexer_run(fart_lexer *lexer)

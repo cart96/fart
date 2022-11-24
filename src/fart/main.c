@@ -1,7 +1,7 @@
 #include "../libfart/assembler.c"
 #include "file.c"
 
-static char fart_info[] = "fart v0.1.1 - brainfuck assembler for DOS";
+static char fart_info[] = "fart v0.1.2 - brainfuck assembler for DOS";
 
 int main(int argc, char **argv)
 {

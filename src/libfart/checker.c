@@ -5,7 +5,7 @@
 int run_checker(fart_lexer *lexer, fart_token *tokens)
 {
     size_t index = 0, temp_index = 0, last_open = 0;
-    fart_jump_table temp_jump_table[4096];
+    fart_jump_table temp_jump_table[MEMORY_SIZE];
 
     for (;;)
     {
