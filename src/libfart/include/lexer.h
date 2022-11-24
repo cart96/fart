@@ -3,8 +3,16 @@
 
 #include "token.h"
 
+#define MEMORY_SIZE 4096
+#define NEXT_CELL_SIZE 11
+#define BACK_CELL_SIZE 9
+#define WRITE_OUTPUT_SIZE 9
+#define GET_INPUT_SIZE 9
+#define BINARY_TAIL (MEMORY_SIZE + NEXT_CELL_SIZE + BACK_CELL_SIZE + WRITE_OUTPUT_SIZE + GET_INPUT_SIZE)
+
 #define IS_USEFUL(c) (c == '+' || c == '-' || c == '>' || c == '<' || c == '[' || c == ']' || c == '.' || c == ',')
-#define CALCULATE_CURRENT_POS(v) (v - 4100)
+#define CALCULATE_CURRENT_POS(v) ((v) - (BINARY_TAIL + 4))
+#define CALCULATE_MEMORY_OFFSET(v) ((v) + 0x100)
 
 /**
  * struct for storing jumps.
@@ -20,12 +28,12 @@ typedef struct
  */
 typedef struct
 {
-    fart_jump_table jump_table[4096]; // storing jumps.
-    char *source;                     // for storing given source.
-    size_t source_length;             // storing given source length.
-    size_t position;                  // current read position.
-    size_t binary_size;               // calculated total binary size while lexing.
-    size_t jump_table_length;         // jump table index for calculating.
+    fart_jump_table jump_table[MEMORY_SIZE]; // storing jumps.
+    char *source;                            // for storing given source.
+    size_t source_length;                    // storing given source length.
+    size_t position;                         // current read position.
+    size_t binary_size;                      // calculated total binary size while lexing.
+    size_t jump_table_length;                // jump table index for calculating.
 } fart_lexer;
 
 /**
